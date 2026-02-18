@@ -28,6 +28,12 @@ class Service {
         
         return data;
     }
+
+    async updateOne(id, body) {
+        const data = await this.repository.updateOne(id, body);
+        
+        return data;
+    }
 }
 
 export const TestService = new Service();

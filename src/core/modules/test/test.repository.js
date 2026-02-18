@@ -2,7 +2,7 @@ import { DataRepository } from "packages/restBuilder/core/dataHandler";
 
 class Repository extends DataRepository {
     findAll() {
-        return this.query().select('*');
+        return this.query().select('*').orderBy('id');
     }
 
     findOne(id) {
@@ -15,6 +15,10 @@ class Repository extends DataRepository {
 
     deleteOne(id) {
         return this.query().delete().where({ id });
+    }
+
+    updateOne(id, body) {
+        return this.query().update(body).where({ id });
     }
 }
 

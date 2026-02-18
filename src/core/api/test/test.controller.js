@@ -34,6 +34,14 @@ class Controller {
 
         return ValidHttpResponse.toOkResponse(data);
     }
+
+    updateOne = async req => {
+        const { id } = req.params;
+        const body = req.body;
+        const data = await this.service.updateOne(id, body); 
+
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const TestController = new Controller();
