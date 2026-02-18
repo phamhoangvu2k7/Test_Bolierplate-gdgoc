@@ -29,5 +29,12 @@ export const TestResolver = Module.builder()
             body: 'CreateTestDto',
             interceptors: [CreateTestInterceptor],
             controller: TestController.createOne
+        },
+        {
+            route: '/:id',
+            method: 'delete',
+            params: [RecordId],
+            interceptors: [RecordIdInterceptor],
+            controller: TestController.deleteOne
         }
     ]);

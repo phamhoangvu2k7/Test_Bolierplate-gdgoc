@@ -27,6 +27,13 @@ class Controller {
 
         return ValidHttpResponse.toOkResponse(data);
     }
+
+    deleteOne = async req => {
+        const { id } = req.params;
+        const data = await this.service.deleteOne(id);
+
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const TestController = new Controller();

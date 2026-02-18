@@ -12,6 +12,10 @@ class Repository extends DataRepository {
     createOne(body) {
         return this.query().insert(body);
     }
+
+    deleteOne(id) {
+        return this.query().delete().where({ id });
+    }
 }
 
 export const TestRepository = new Repository('test');

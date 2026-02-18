@@ -22,6 +22,12 @@ class Service {
 
         return data;
     }
+
+    async deleteOne(id) {
+        const data = await this.repository.deleteOne(id);
+        
+        return data;
+    }
 }
 
 export const TestService = new Service();
