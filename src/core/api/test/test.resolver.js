@@ -3,7 +3,7 @@ import { TestController } from './test.controller';
 import { RecordId, QueryCriteriaDocument } from 'core/common/swagger';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
 import { CreateTestInterceptor } from 'core/modules/test/interceptor';
-import { FilterTestInterceptor } from 'core/modules/test/interceptor/filter-test.interceptor';
+import { PaginationInterceptor } from 'core/modules/interceptor/filter/pagination.interceptor';
 
 export const TestResolver = Module.builder() 
     .addPrefix({
@@ -19,7 +19,7 @@ export const TestResolver = Module.builder()
                 QueryCriteriaDocument.page(), 
                 QueryCriteriaDocument.size()  
             ],
-            interceptors: [FilterTestInterceptor],
+            interceptors: [PaginationInterceptor],
             controller: TestController.findAll
         },
         {
