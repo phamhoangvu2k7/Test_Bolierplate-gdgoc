@@ -10,7 +10,9 @@ class Controller {
     }
 
     findAll = async req => {
-        const data = await this.service.findAll();
+        const page = parseInt(req.query.page) || 1;
+        const size = parseInt(req.query.size) || 10;
+        const data = await this.service.findAll(page, size);
 
         return ValidHttpResponse.toOkResponse(data);
     }

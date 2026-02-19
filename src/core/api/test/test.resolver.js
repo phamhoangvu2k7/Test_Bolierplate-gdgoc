@@ -1,8 +1,9 @@
 import { Module } from 'packages/handler/Module';
 import { TestController } from './test.controller';
+import { RecordId, QueryCriteriaDocument } from 'core/common/swagger';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
-import { RecordId } from 'core/common/swagger';
 import { CreateTestInterceptor } from 'core/modules/test/interceptor';
+import { FilterTestInterceptor } from 'core/modules/test/interceptor/filter-test.interceptor';
 
 export const TestResolver = Module.builder() 
     .addPrefix({
@@ -14,6 +15,11 @@ export const TestResolver = Module.builder()
         {
             route: '/',
             method: 'get',
+            params: [
+                QueryCriteriaDocument.page(), 
+                QueryCriteriaDocument.size()  
+            ],
+            interceptors: [FilterTestInterceptor],
             controller: TestController.findAll
         },
         {

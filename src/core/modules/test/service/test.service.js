@@ -5,8 +5,8 @@ class Service {
         this.repository = TestRepository;
     }
 
-    async findAll() {
-        const data = await this.repository.findAll();
+    async findAll(page, size) {
+        const data = await this.repository.findAll(page, size);
 
         return data;
     }

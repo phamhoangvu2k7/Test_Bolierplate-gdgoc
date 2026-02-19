@@ -1,8 +1,9 @@
 import { DataRepository } from "packages/restBuilder/core/dataHandler";
 
 class Repository extends DataRepository {
-    findAll() {
-        return this.query().select('*').orderBy('id');
+    findAll(page, size) {
+        const offset = (page - 1) * size;
+        return this.query().select('*').limit(size).offset(offset).orderBy('id');
     }
 
     findOne(id) {
