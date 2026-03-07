@@ -1,10 +1,12 @@
 import { ApiDocument } from 'core/config/swagger.config';
 import { SwaggerDocument } from 'packages/swagger';
 
-ApiDocument.addModel('CreateTestDto', {
+ApiDocument.addModel('CreateInternDto', {
     name: SwaggerDocument.ApiProperty({ type: 'string' }),
+    email: SwaggerDocument.ApiProperty({ type: 'string' }),
+
 });
 
-export const CreateTestDto = body => ({
+export const CreateInternDto = body => ({
     name: body.name,
 });

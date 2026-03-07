@@ -1,8 +1,8 @@
 import { Module } from 'packages/handler/Module';
-import { DemoController } from './demo.controller';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
 import { RecordId } from 'core/common/swagger';
 import { CreateDemoInterceptor } from 'core/modules/demo/interceptor';
+import { DemoController } from './demo.controller';
 
 export const DemoResolver = Module.builder()
     .addPrefix({

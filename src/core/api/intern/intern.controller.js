@@ -1,12 +1,11 @@
-import { CreateTestDto } from 'core/modules/test/dto';
+import { createInternDto } from 'core/modules/intern/dto';
 
-const {TestService} = require('core/modules/test/service/test.service');
+const {InternService} = require('core/modules/intern/service/intern.service');
 const { ValidHttpResponse } = require('packages/handler/response/validHttp.response');
-
 
 class Controller {
     constructor() {
-        this.service = TestService;
+        this.service = InternService;
     }
 
     findAll = async req => {
@@ -25,7 +24,7 @@ class Controller {
     }
 
     createOne = async req => {
-        const data = await this.service.createOne(CreateTestDto(req.body));
+        const data = await this.service.createOne(createInternDto(req.body));
 
         return ValidHttpResponse.toOkResponse(data);
     }
@@ -44,6 +43,7 @@ class Controller {
 
         return ValidHttpResponse.toOkResponse(data);
     }
+
 }
 
-export const TestController = new Controller();
+export const InternController = new Controller();

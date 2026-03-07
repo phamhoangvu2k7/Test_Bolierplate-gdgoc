@@ -1,25 +1,22 @@
-import { TestRepository } from '../test.repository';
+import { InternRepository } from '../intern.repository';
 
 class Service {
     constructor() {
-        this.repository = TestRepository;
+        this.repository = InternRepository;
     }
 
     async findAll(page, size) {
         const data = await this.repository.findAll(page, size);
-
         return data;
     }
 
     async findOne(id) {
         const data = await this.repository.findOne(id);
-
         return data;
     }
 
-    async createOne(CreateDemoDto) {
-        const data = await this.repository.createOne(CreateDemoDto);
-
+    async createOne(infomation) {
+        const data = await this.repository.createOne(infomation);
         return data;
     }
 
@@ -34,4 +31,4 @@ class Service {
     }
 }
 
-export const TestService = new Service();
+export const InternService = new Service();

@@ -5,6 +5,8 @@ import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './auth/auth.resolver';
 import { DemoResolver } from './demo';
 import { TestResolver } from './test';
+import { InternResolver } from './intern';
+
 
 export const ModuleResolver = HandlerResolver
     .builder()
@@ -14,5 +16,6 @@ export const ModuleResolver = HandlerResolver
         UserResolver,
         MediaResolver,
         DemoResolver,
-        TestResolver
+        TestResolver,
+        InternResolver,
     ]);

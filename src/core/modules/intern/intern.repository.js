@@ -23,4 +23,4 @@ class Repository extends DataRepository {
     }
 }
 
-export const TestRepository = new Repository('test');
+export const InternRepository = new Repository('intern');

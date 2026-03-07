@@ -1,15 +1,15 @@
 import { Module } from 'packages/handler/Module';
 import { RecordId, QueryCriteriaDocument } from 'core/common/swagger';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
-import { CreateTestInterceptor } from 'core/modules/test/interceptor/create-test.interceptor';
-import { FilterTestInterceptor } from 'core/modules/test/interceptor/filter-test.interceptor';
-import { TestController } from './test.controller';
+import { CreateInternInterceptor } from 'core/modules/intern/interceptor/create-intern.interceptor';
+import { FilterInternInterceptor } from 'core/modules/intern/interceptor/filter-intern.interceptor';
+import { InternController } from './intern.controller';
 
-export const TestResolver = Module.builder()
+export const InternResolver = Module.builder()
     .addPrefix({
-        prefixPath: '/test',
-        tag: 'test',
-        module: 'TestModule',
+        prefixPath: '/intern',
+        tag: 'intern',
+        module: 'InternModule',
     })
     .register([
         {
@@ -19,36 +19,36 @@ export const TestResolver = Module.builder()
                 QueryCriteriaDocument.page(),
                 QueryCriteriaDocument.size()
             ],
-            interceptors: [FilterTestInterceptor],
-            controller: TestController.findAll
+            interceptors: [FilterInternInterceptor],
+            controller: InternController.findAll
         },
         {
             route: '/:id',
             method: 'get',
             params: [RecordId],
             interceptors: [RecordIdInterceptor],
-            controller: TestController.findOne
+            controller: InternController.findOne
         },
         {
             route: '/',
             method: 'post',
-            body: 'CreateTestDto',
-            interceptors: [CreateTestInterceptor],
-            controller: TestController.createOne
+            body: 'CreateInternDto',
+            interceptors: [CreateInternInterceptor],
+            controller: InternController.createOne
         },
         {
             route: '/:id',
             method: 'delete',
             params: [RecordId],
             interceptors: [RecordIdInterceptor],
-            controller: TestController.deleteOne
+            controller: InternController.deleteOne
         },
         {
             route: '/:id',
             method: 'patch',
             params: [RecordId],
-            body: 'CreateTestDto',
-            interceptors: [CreateTestInterceptor],
-            controller: TestController.updateOne
+            body: 'CreateInternDto',
+            interceptors: [CreateInternInterceptor],
+            controller: InternController.updateOne
         }
     ]);
